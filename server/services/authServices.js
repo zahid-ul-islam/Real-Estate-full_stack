@@ -11,9 +11,9 @@ const signUp = async (req,res, next)=>{
             password: hash,
         }
         const newUser = new User(userObj);
-        await newUser.
-        save();
-        res.status(200).json(newUser);
+        await newUser.save();
+        const user = await User.findOne({ email });
+        res.status(200).json(user);
     } catch (error) {
         next(error);
     }
